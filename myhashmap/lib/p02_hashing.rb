@@ -26,11 +26,12 @@ class Hash
   # Make sure to implement an actual Hash#hash method
   def hash
 	0
-	arr = []
+	str_arr = []
 	self.keys.sort.each do |k|
-		arr << k
-		arr << self[k]
+		str_arr << k.inspect
+		str_arr << self[k].inspect
 	end
-	arr.hash
+	num_arr = str_arr.map { |str| str.hash }
+	num_arr.hash
   end
 end
