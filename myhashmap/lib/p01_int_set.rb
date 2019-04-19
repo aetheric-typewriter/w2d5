@@ -69,12 +69,15 @@ class ResizingIntSet
   def insert(num)
 	unless self.include?(num)
 		self[num] << num 
-		resize! if (count + 1) > @store.size
+		resize! if (@count + 1) > @store.size
 		@count += 1
 	end
   end
 
   def remove(num)
+	bucket = self[num]
+	@count -= 1 if bucket.include?(num)
+	bucket.delete(num)
   end
 
   def include?(num)
