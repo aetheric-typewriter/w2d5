@@ -27,9 +27,10 @@ class Hash
   def hash
 	0
 	arr = []
-	self.each do |k, v|
-		arr << [k, v]
+	self.keys.sort.each do |k|
+		arr << k
+		arr << self[k]
 	end
-	arr.sort.hash
+	arr.hash
   end
 end
